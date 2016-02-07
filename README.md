@@ -79,6 +79,11 @@ privileged         true      []        true      RunAsAny    RunAsAny           
 restricted         false     []        false     MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>
 ```
 
+# create SCC
+```
+oc export scc privileged --as-template='olisecurity' -o json > olisecurity.json
+```
+
 # selinux container
 ```
 apiVersion: v1
