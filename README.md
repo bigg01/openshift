@@ -141,5 +141,5 @@ error: apiVersion should not be changed
 A copy of your changes has been stored to "/tmp/kubectl-edit-lmcwy.yaml"
 [root@atomic-node01 origin]# oc edit scc restricted
 ```
-<img src="https://github.com/bigg01/openshift/raw/master/images/ose_overview.tiff" 
+<img src="https://github.com/bigg01/openshift/blob/master/ose_pod.jpg" 
 alt="OpenShift 3: Node.js Sample" width="240" height="180" border="10" /></a>
