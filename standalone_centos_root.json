@@ -1,0 +1,105 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "standalone_centos",
+        "creationTimestamp": null
+    },
+    "objects": [
+        {
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "olipod",
+                "creationTimestamp": null,
+                "labels": {
+                    "name": "oli"
+                },
+                "annotations": {
+                    "openshift.io/scc": "restricted"
+                }
+            },
+            "spec": {
+                "volumes": [
+                    {
+                        "name": "tmp",
+                        "emptyDir": {}
+                    },
+                    {
+                        "name": "default-token-3vsgs",
+                        "secret": {
+                            "secretName": "default-token-3vsgs"
+                        }
+                    }
+                ],
+                "containers": [
+                    {
+                        "name": "oli-pod",
+                        "image": "centos",
+                        "command": [
+                            "/bin/sh",
+                            "-c",
+                            "while true; do echo hello world; sleep 1; done"
+                        ],
+                        "ports": [
+                            {
+                                "containerPort": 8080,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "volumeMounts": [
+                            {
+                                "name": "tmp",
+                                "mountPath": "/tmp"
+                            },
+                            {
+                                "name": "default-token-3vsgs",
+                                "readOnly": true,
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount"
+                            }
+                        ],
+                        "terminationMessagePath": "/dev/termination-log",
+                        "imagePullPolicy": "IfNotPresent",
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID",
+                                    "SYS_CHROOT"
+                                ]
+                            },
+                            "privileged": false,
+                            "seLinuxOptions": {
+                                "level": "s0:c7,c4"
+                            },
+                            "runAsUser": 1000050000
+                        }
+                    }
+                ],
+                "restartPolicy": "Never",
+                "terminationGracePeriodSeconds": 30,
+                "dnsPolicy": "ClusterFirst",
+                "host": "atomic-node01",
+                "serviceAccountName": "default",
+                "serviceAccount": "default",
+                "nodeName": "atomic-node01",
+                "securityContext": {
+                    "seLinuxOptions": {
+                        "level": "s0:c7,c4"
+                    }
+                },
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-dtyy0"
+                    }
+                ]
+            },
+            "status": {
+                "phase": "Pending"
+            }
+        }
+    ]
+}
