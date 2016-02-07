@@ -2,6 +2,9 @@
 
 The goal create a pod where is not dying
 
+![alt tag](http://url/to/img.png)
+
+
 # Create pod
 oc create -f ./oli-pod.json
 
