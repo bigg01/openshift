@@ -1,0 +1,142 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "centos-base-container",
+        "creationTimestamp": null
+    },
+    "objects": [
+        {
+            "kind": "Template",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "standalonecentos-para-node-probs",
+                "creationTimestamp": null,
+                "annotations": {
+                    "description": "Description",
+                    "iconClass": "icon-python",
+                    "tags": "SIX,Base"
+                }
+            },
+            "objects": [
+                {
+                    "apiVersion": "v1",
+                    "kind": "Template",
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "name": "standalonecentos"
+                    },
+                    "objects": [
+                        {
+                            "apiVersion": "v1",
+                            "kind": "Pod",
+                            "metadata": {
+                                "annotations": {
+                                    "openshift.io/scc": "restricted"
+                                },
+                                "creationTimestamp": null,
+                                "labels": {
+                                    "name": "${CONTAINER_NAME}"
+                                },
+                                "name": "${CONTAINER_NAME}"
+                            },
+                            "spec": {
+                                "containers": [
+                                    {
+                                        "command": [
+                                            "/bin/sh",
+                                            "-c",
+                                            "while true; do echo hello world; sleep 1; done"
+                                        ],
+                                        "image": "centos:${CONTAINER_RELEASE}",
+                                        "imagePullPolicy": "IfNotPresent",
+                                        "name": "${CONTAINER_NAME}",
+                                        "ports": [
+                                            {
+                                                "containerPort": 8080,
+                                                "protocol": "TCP"
+                                            }
+                                        ],
+                                        "resources": {},
+                                        "securityContext": {
+                                            "capabilities": {
+                                                "drop": [
+                                                    "KILL",
+                                                    "MKNOD",
+                                                    "SETGID",
+                                                    "SETUID",
+                                                    "SYS_CHROOT"
+                                                ]
+                                            },
+                                            "privileged": false,
+                                            "runAsUser": 1000050000,
+                                            "seLinuxOptions": {
+                                                "level": "s0:c7,c4"
+                                            }
+                                        },
+                                        "terminationMessagePath": "/dev/termination-log",
+                                        "volumeMounts": [
+                                            {
+                                                "mountPath": "/tmp",
+                                                "name": "tmp"
+                                            },
+                                            {
+                                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                                "name": "default-token-3vsgs",
+                                                "readOnly": true
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "dnsPolicy": "ClusterFirst",
+                                "host": "atomic-node01",
+                                "imagePullSecrets": [
+                                    {
+                                        "name": "default-dockercfg-dtyy0"
+                                    }
+                                ],
+                                "nodeName": "atomic-node01",
+                                "restartPolicy": "Never",
+                                "securityContext": {
+                                    "seLinuxOptions": {
+                                        "level": "s0:c7,c4"
+                                    }
+                                },
+                                "serviceAccount": "default",
+                                "serviceAccountName": "default",
+                                "terminationGracePeriodSeconds": 30,
+                                "volumes": [
+                                    {
+                                        "emptyDir": {},
+                                        "name": "tmp"
+                                    },
+                                    {
+                                        "name": "default-token-3vsgs",
+                                        "secret": {
+                                            "secretName": "default-token-3vsgs"
+                                        }
+                                    }
+                                ]
+                            },
+                            "status": {
+                                "phase": "Pending"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "CONTAINER_NAME",
+                    "description": "describe your container",
+                    "value": "mycontainer"
+                },
+                {
+                    "name": "CONTAINER_RELEASE",
+                    "description": "container release",
+                    "value": "latest"
+                }
+            ]
+        }
+    ]
+}
