@@ -66,7 +66,8 @@ template "standalonecentos" created
 ```
 Cannot create pod "olipod-1". pods "olipod-1" is forbidden: unable to validate against any security context constraint: [securityContext.runAsUser: Invalid value: 0: UID on container oli-pod does not match required range. Found 0, required min: 1000050000 max: 1000059999].
 ```
-
+# SCC
+https://docs.openshift.com/enterprise/3.0/admin_guide/manage_scc.html
 ```
  oc get scc
 NAME               PRIV      CAPS      HOSTDIR   SELINUX     RUNASUSER          FSGROUP    SUPGROUP   PRIORITY
