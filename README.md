@@ -2,7 +2,6 @@
 
 The goal create a pod where is not dying
 
--- ![alt tag](https://github.com/bigg01/openshift/raw/master/images/ose_overview.tiff)
 https://docs.openshift.org/latest/dev_guide/new_app.html
 https://docs.openshift.org/latest/getting_started/administrators.html#running-in-a-docker-container
 
