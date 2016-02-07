@@ -23,9 +23,9 @@
                         },
                         "creationTimestamp": null,
                         "labels": {
-                            "name": "oli"
+                            "name": "${CONTAINER_NAME}"
                         },
-                        "name": "olipod-1"
+                        "name": "${CONTAINER_NAME}"
                     },
                     "spec": {
                         "containers": [
