@@ -60,7 +60,13 @@ oc export pod/olipod --as-template=standalone_centos -o json> standalone_centos.
 ```
 oc create -f standalone_centos_temp.json
 template "standalonecentos" created
+
 ```
+# run user as 0(root)
+```
+Cannot create pod "olipod-1". pods "olipod-1" is forbidden: unable to validate against any security context constraint: [securityContext.runAsUser: Invalid value: 0: UID on container oli-pod does not match required range. Found 0, required min: 1000050000 max: 1000059999].
+```
+
 
 # selinux container
 ```
