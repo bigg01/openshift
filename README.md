@@ -56,7 +56,11 @@ JSON
 ```
 oc export pod/olipod --as-template=standalone_centos -o json> standalone_centos.json
 ```
-
+#create template
+```
+oc create -f standalone_centos_temp.json
+template "standalonecentos" created
+```
 
 # selinux container
 ```
