@@ -1,0 +1,72 @@
+{
+    "kind": "Template",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "centoL-base-container",
+        "creationTimestamp": null
+    },
+    "objects": [
+        {
+            "kind": "Template",
+            "apiVersion": "v1",
+            "metadata": {
+                "name": "redis-template",
+                "creationTimestamp": null,
+                "annotations": {
+                    "description": "Description",
+                    "iconClass": "icon-python",
+                    "tags": "base,centos"
+                }
+            },
+            "objects": [
+                {
+                    "apiVersion": "v1",
+                    "kind": "Pod",
+                    "metadata": {
+                        "name": "base-centos"
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "command": [
+                                    "/bin/sh",
+                                    "-c",
+                                    "while true; do echo hello world; sleep 60; done"
+                                ],
+                                "env": [
+                                    {
+                                        "name": "SLEEP_TIME",
+                                        "value": "${SLEEP_TIME}"
+                                    }
+                                ],
+                                "image": "centos:latest",
+                                "name": "master",
+                                "ports": [
+                                    {
+                                        "containerPort": 6379,
+                                        "protocol": "TCP"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "parameters": [
+                {
+                    "name": "CONTAINER_RELEASE",
+                    "description": "container release",
+                    "value": "latest"
+                },
+                {
+                    "name": "SLEEP_TIME",
+                    "description": "sleep time",
+                    "value": "60"
+                }
+            ],
+            "labels": {
+                "centos": "base"
+            }
+        }
+    ]
+}
