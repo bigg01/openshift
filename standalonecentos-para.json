@@ -2,7 +2,7 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-        "name": "standalonecentos-para",
+        "name": "standalonecentos-para-node",
         "creationTimestamp": null
     },
     "objects": [
@@ -35,9 +35,9 @@
                                     "-c",
                                     "while true; do echo hello world; sleep 1; done"
                                 ],
-                                "image": "centos",
+                                "image": "centos:${CONTAINER_RELEASE}", 
                                 "imagePullPolicy": "IfNotPresent",
-                                "name": "oli-pod",
+                                "name": "${CONTAINER_NAME}",
                                 "ports": [
                                     {
                                         "containerPort": 8080,
