@@ -9,13 +9,15 @@ oc create -f ./oli-pod.json
 oc delete pod olipod
 
 # get pods
+```
 oc get pod
 NAME                      READY     STATUS      RESTARTS   AGE
 hello-openshift-1-rm2is   1/1       Running     0          1h
 olicentos                 0/1       Completed   0          19m
 olipod                    1/1       Running     0          5m
-
+```
 # rsh into pod
+```
 oc rsh olipod
 bash-4.2$
 bash-4.2$ ls
@@ -26,3 +28,4 @@ bash-4.2$ ps
   381 ?        00:00:00 bash
   395 ?        00:00:00 ps
 bash-4.2$
+```
