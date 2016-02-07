@@ -2,7 +2,7 @@
     "kind": "Template",
     "apiVersion": "v1",
     "metadata": {
-        "name": "standalonecentos-para-node",
+        "name": "standalonecentos-para-node-probs",
         "creationTimestamp": null
     },
     "objects": [

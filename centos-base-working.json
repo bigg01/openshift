@@ -1,4 +1,4 @@
-{
+  {
             "kind": "Template",
             "apiVersion": "v1",
             "metadata": {
@@ -23,7 +23,7 @@
                                 "command": [
                                     "/bin/sh",
                                     "-c",
-                                    "while true; do echo hello world; sleep 60; done"
+                                    "while true; do echo hello world; sleep ${SLEEP_TIME}; done"
                                 ],
                                 "env": [
                                     {
@@ -51,6 +51,11 @@
                     "value": "latest"
                 },
                 {
+                    "name": "CONTAINER_NAME",
+                    "description": "container name",
+                    "value": "mycontainer"
+                },
+                {
                     "name": "SLEEP_TIME",
                     "description": "sleep time",
                     "value": "60"
@@ -59,5 +64,5 @@
             "labels": {
                 "centos": "base"
             }
-}
+        }
 
