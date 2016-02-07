@@ -32,3 +32,16 @@ bash-4.2$ ps
   395 ?        00:00:00 ps
 bash-4.2$
 ```
+# rpm install in openshift?
+
+```
+oc rsh olipod
+bash-4.2$ yum install httpd -y
+Loaded plugins: fastestmirror, ovl
+ovl: Error while doing RPMdb copy-up:
+[Errno 13] Permission denied: '/var/lib/rpm/.dbenv.lock'
+
+
+Error making cache directory: /var/cache/yum/x86_64/7/base error was: [Errno 13] Permission denied: '/var/cache/yum/x86_64'
+bash-4.2$
+```
