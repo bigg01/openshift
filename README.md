@@ -2,7 +2,7 @@
 
 The goal create a pod where is not dying
 
-![alt tag](http://url/to/img.png)
+![alt tag](https://github.com/bigg01/openshift/raw/master/images/ose_overview.tiff)
 
 
 # Create pod
