@@ -56,3 +56,26 @@ JSON
 ```
 oc export pod/olipod --as-template=standalone_centos -o json> standalone_centos.json
 ```
+
+
+# selinux container
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    openshift.io/scc: privileged
+spec:
+  containers:
+    securityContext:
+      privileged: false
+      runAsUser: 0
+```
+
+```
+  "privileged": false,
+                            "seLinuxOptions": {
+                                "level": "s0:c7,c4"
+                            },
+                            "runAsUser": 1000050000
+```
