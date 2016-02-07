@@ -1,0 +1,56 @@
+
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "olipod",
+    "creationTimestamp": null,
+    "labels": {
+      "name": "oli"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "oli-pod",
+        "image": "centos",
+      "command": [
+            "/bin/sh",
+            "-c",
+            "while true; do echo hello world; sleep 1; done"
+        ],
+        "ports": [
+          {
+            "containerPort": 8080,
+            "protocol": "TCP"
+          }
+        ],
+        "resources": {},
+        "volumeMounts": [
+          {
+            "name":"tmp",
+            "mountPath":"/tmp"
+          }
+        ],
+        "terminationMessagePath": "/dev/termination-log",
+        "imagePullPolicy": "IfNotPresent",
+        "capabilities": {},
+        "securityContext": {
+          "capabilities": {},
+          "privileged": false
+        }
+      }
+    ],
+    "volumes": [
+      {
+        "name":"tmp",
+        "emptyDir": {}
+      }
+    ],
+    "restartPolicy": "Never",
+    "dnsPolicy": "ClusterFirst",
+    "serviceAccount": ""
+  },
+  "status": {}
+}
+
