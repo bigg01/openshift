@@ -1,16 +1,8 @@
 {
-    "kind": "Template",
-    "apiVersion": "v1",
-    "metadata": {
-        "name": "centoL-base-container",
-        "creationTimestamp": null
-    },
-    "objects": [
-        {
             "kind": "Template",
             "apiVersion": "v1",
             "metadata": {
-                "name": "redis-template",
+                "name": "centos-base-container",
                 "creationTimestamp": null,
                 "annotations": {
                     "description": "Description",
@@ -67,6 +59,5 @@
             "labels": {
                 "centos": "base"
             }
-        }
-    ]
 }
+
