@@ -47,6 +47,12 @@ bash-4.2$
 ```
 # Templates
 https://docs.openshift.org/latest/dev_guide/templates.html#uploading-a-template
+YAML
 ```
 oc export pod/olipod --as-template=standalone_centos > standalone_centos.json
+```
+
+JSON
+```
+oc export pod/olipod --as-template=standalone_centos -o json> standalone_centos.json
 ```
