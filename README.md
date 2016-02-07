@@ -67,6 +67,16 @@ template "standalonecentos" created
 Cannot create pod "olipod-1". pods "olipod-1" is forbidden: unable to validate against any security context constraint: [securityContext.runAsUser: Invalid value: 0: UID on container oli-pod does not match required range. Found 0, required min: 1000050000 max: 1000059999].
 ```
 
+```
+ oc get scc
+NAME               PRIV      CAPS      HOSTDIR   SELINUX     RUNASUSER          FSGROUP    SUPGROUP   PRIORITY
+anyuid             false     []        false     MustRunAs   RunAsAny           RunAsAny   RunAsAny   10
+hostaccess         false     []        true      MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>
+hostmount-anyuid   false     []        true      MustRunAs   RunAsAny           RunAsAny   RunAsAny   <none>
+nonroot            false     []        false     MustRunAs   MustRunAsNonRoot   RunAsAny   RunAsAny   <none>
+privileged         true      []        true      RunAsAny    RunAsAny           RunAsAny   RunAsAny   <none>
+restricted         false     []        false     MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>
+```
 
 # selinux container
 ```
