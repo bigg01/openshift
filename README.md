@@ -45,3 +45,5 @@ ovl: Error while doing RPMdb copy-up:
 Error making cache directory: /var/cache/yum/x86_64/7/base error was: [Errno 13] Permission denied: '/var/cache/yum/x86_64'
 bash-4.2$
 ```
+Templates
+https://docs.openshift.org/latest/dev_guide/templates.html#uploading-a-template
