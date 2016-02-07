@@ -56,7 +56,33 @@ JSON
 ```
 oc export pod/olipod --as-template=standalone_centos -o json> standalone_centos.json
 ```
+#create template
+```
+oc create -f standalone_centos_temp.json
+template "standalonecentos" created
 
+```
+# run user as 0(root)
+```
+Cannot create pod "olipod-1". pods "olipod-1" is forbidden: unable to validate against any security context constraint: [securityContext.runAsUser: Invalid value: 0: UID on container oli-pod does not match required range. Found 0, required min: 1000050000 max: 1000059999].
+```
+# SCC
+https://docs.openshift.com/enterprise/3.0/admin_guide/manage_scc.html
+```
+ oc get scc
+NAME               PRIV      CAPS      HOSTDIR   SELINUX     RUNASUSER          FSGROUP    SUPGROUP   PRIORITY
+anyuid             false     []        false     MustRunAs   RunAsAny           RunAsAny   RunAsAny   10
+hostaccess         false     []        true      MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>
+hostmount-anyuid   false     []        true      MustRunAs   RunAsAny           RunAsAny   RunAsAny   <none>
+nonroot            false     []        false     MustRunAs   MustRunAsNonRoot   RunAsAny   RunAsAny   <none>
+privileged         true      []        true      RunAsAny    RunAsAny           RunAsAny   RunAsAny   <none>
+restricted         false     []        false     MustRunAs   MustRunAsRange     RunAsAny   RunAsAny   <none>
+```
+
+# create SCC
+```
+oc export scc privileged --as-template='olisecurity' -o json > olisecurity.json
+```
 
 # selinux container
 ```
@@ -78,4 +104,16 @@ spec:
                                 "level": "s0:c7,c4"
                             },
                             "runAsUser": 1000050000
+```
+```
+ "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID",
+                                    "SYS_CHROOT"
+                                ]
+                            },
 ```
