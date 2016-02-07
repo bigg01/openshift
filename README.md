@@ -117,3 +117,24 @@ spec:
                                 ]
                             },
 ```
+#  create user
+```
+cat <<EOF | oc create -n test -f -
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: oliuser 
+EOF
+
+
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: RunAsAny
+"/tmp/kubectl-edit-lmcwy.yaml" 41L, 1137C written
+error: apiVersion should not be changed
+A copy of your changes has been stored to "/tmp/kubectl-edit-lmcwy.yaml"
+[root@atomic-node01 origin]# oc edit scc restricted
+```
