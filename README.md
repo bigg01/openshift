@@ -79,3 +79,15 @@ spec:
                             },
                             "runAsUser": 1000050000
 ```
+```
+ "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID",
+                                    "SYS_CHROOT"
+                                ]
+                            },
+```
