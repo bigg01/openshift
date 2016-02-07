@@ -62,6 +62,8 @@ oc export pod/olipod --as-template=standalone_centos -o json> standalone_centos.
 oc create -f standalone_centos_temp.json
 template "standalonecentos" created
 
+oc create -f centos-base-working.json
+
 ```
 # run user as 0(root)
 ```
