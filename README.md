@@ -142,4 +142,7 @@ A copy of your changes has been stored to "/tmp/kubectl-edit-lmcwy.yaml"
 [root@atomic-node01 origin]# oc edit scc restricted
 ```
 <img src="https://github.com/bigg01/openshift/blob/master/ose_pod.jpg" 
-alt="OpenShift 3: Node.js Sample" width="240" height="180" border="10" /></a>
+alt="pod" width="340" height="180" border="10" /></a>
+<img src="https://raw.githubusercontent.com/bigg01/openshift/master/ose_overview.jpg" 
+alt="overview" width="340" height="180" border="10" /></a>
+
