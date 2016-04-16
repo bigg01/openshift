@@ -5,6 +5,8 @@ The goal create a pod where is not dying
 https://docs.openshift.org/latest/dev_guide/new_app.html
 https://docs.openshift.org/latest/getting_started/administrators.html#running-in-a-docker-container
 
+# new app from dockerfile
+oc new-app https://github.com/bigg01/dockerfun.git --context-dir=flask/  --strategy=docker
 
 # Create pod
 oc create -f ./oli-pod.json
