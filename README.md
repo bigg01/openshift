@@ -6,7 +6,7 @@ https://docs.openshift.org/latest/dev_guide/new_app.html
 https://docs.openshift.org/latest/getting_started/administrators.html#running-in-a-docker-container
 
 # connect mysql port forwarding
-oc port-forward mysql-1-kabxl  3306:3306
+```oc port-forward mysql-1-kabxl  3306:3306```
 I0417 13:42:13.326021    2342 portforward.go:213] Forwarding from 127.0.0.1:3306 -> 3306
 I0417 13:42:13.326255    2342 portforward.go:213] Forwarding from [::1]:3306 -> 3306
  vI0417 13:43:38.949544    2342 portforward.go:247] Handling connection for 3306
