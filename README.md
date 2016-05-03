@@ -40,42 +40,19 @@ Loading mirror speeds from cached hostfile
 Resolving Dependencies
 --> Running transaction check
 ---> Package httpd.x86_64 0:2.4.6-40.el7.centos will be installed
---> Processing Dependency: httpd-tools = 2.4.6-40.el7.centos for package: httpd-2.4.6-40.el7.centos.x86_64
---> Processing Dependency: system-logos >= 7.92.1-1 for package: httpd-2.4.6-40.el7.centos.x86_64
---> Processing Dependency: /etc/mime.types for package: httpd-2.4.6-40.el7.centos.x86_64
---> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.6-40.el7.centos.x86_64
---> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.6-40.el7.centos.x86_64
---> Running transaction check
----> Package apr.x86_64 0:1.4.8-3.el7 will be installed
----> Package apr-util.x86_64 0:1.5.2-6.el7 will be installed
----> Package centos-logos.noarch 0:70.0.6-3.el7.centos will be installed
----> Package httpd-tools.x86_64 0:2.4.6-40.el7.centos will be installed
----> Package mailcap.noarch 0:2.1.41-2.el7 will be installed
---> Finished Dependency Resolution
 
-Dependencies Resolved
+# rm -rf /run/httpd/* /tmp/httpd*
+[root@temp2-1-gyvia /]#
+[root@temp2-1-gyvia /]# exec /usr/sbin/apachectl -DFOREGROUND
 
-================================================================================
- Package             Arch          Version                    Repository   Size
-================================================================================
-Installing:
- httpd               x86_64        2.4.6-40.el7.centos        base        2.7 M
-Installing for dependencies:
- apr                 x86_64        1.4.8-3.el7                base        103 k
- apr-util            x86_64        1.5.2-6.el7                base         92 k
- centos-logos        noarch        70.0.6-3.el7.centos        base         21 M
- httpd-tools         x86_64        2.4.6-40.el7.centos        base         82 k
- mailcap             noarch        2.1.41-2.el7               base         31 k
+# # oc port-forward temp2-1-gyvia 8083:80
+I0503 21:42:05.607473    2524 portforward.go:213] Forwarding from 127.0.0.1:8083 -> 80
+I0503 21:42:05.607612    2524 portforward.go:213] Forwarding from [::1]:8083 -> 80
+I0503 21:42:19.696162    2524 portforward.go:247] Handling connection for 8083
+I0503 21:42:19.696289    2524 portforward.go:247] Handling connection for 8083
 
-Transaction Summary
-================================================================================
-Install  1 Package (+5 Dependent packages)
+open browser 127.0.0.1:8083
 
-Total download size: 24 M
-Installed size: 31 M
-Downloading packages:
-warning: /var/cache/yum/x86_64/7/base/packages/apr-util-1.5.2-6.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
-Public key for apr-util-1.5.2-6.el7.x86_64.rpm is not installed
 
 # connect mysql port forwarding
 ```oc port-forward mysql-1-kabxl  3306:3306```
