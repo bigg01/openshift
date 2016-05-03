@@ -5,6 +5,9 @@ The goal create a pod where is not dying
 https://docs.openshift.org/latest/dev_guide/new_app.html
 https://docs.openshift.org/latest/getting_started/administrators.html#running-in-a-docker-container
 
+# template get
+`oc get pod  minion-1-5a9p6 -o go-template={{.status.podIP}}`
+
 # run tty container root yum install
 # oc run -i --tty temp2 --image centos:latest
 Waiting for pod elk/temp2-1-gyvia to be running, status is Pending, pod ready: false
