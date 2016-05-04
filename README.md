@@ -208,3 +208,6 @@ alt="pod" width="340" height="180" border="10" /></a>
 <img src="https://raw.githubusercontent.com/bigg01/openshift/master/ose_overview.jpg" 
 alt="overview" width="340" height="180" border="10" /></a>
 
+
+# run as any user
+https://blog.openshift.com/getting-any-docker-image-running-in-your-own-openshift-cluster/
