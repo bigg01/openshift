@@ -211,3 +211,35 @@ alt="overview" width="340" height="180" border="10" /></a>
 
 # run as any user
 https://blog.openshift.com/getting-any-docker-image-running-in-your-own-openshift-cluster/
+
+run any user
+oadm policy add-scc-to-user anyuid -z playground
+oc edit scc anyuid
+
+`
+users:
+- system:serviceaccount:hexboard:instant-container
+- system:serviceaccount:admin:instant-container
+- system:serviceaccount:playground:default
+`
+oc status
+In project playground on server https://xxx:8443
+
+oc run --restart=Never --attach --stdin --tty --image registry.access.redhat.com/rhel7 olitest  /bin/sh
+
+ oc run -i --tty temp2 --image registry.access.redhat.com/rhel7
+
+Waiting for pod playground/temp2-1-gognv to be running, status is Pending, pod ready: false
+
+
+
+
+
+[root@temp2-1-gognv /]# 
+[root@temp2-1-gognv /]# 
+[root@temp2-1-gognv /]# 
+[root@temp2-1-gognv /]# 
+[root@temp2-1-gognv /]# 
+[root@temp2-1-gognv /]# id
+uid=0(root) gid=0(root) groups=0(root)
+
