@@ -243,3 +243,11 @@ Waiting for pod playground/temp2-1-gognv to be running, status is Pending, pod r
 [root@temp2-1-gognv /]# id
 uid=0(root) gid=0(root) groups=0(root)
 
+```
+oc get pods -o json 2>/dev/null |jq -r '.items[].status.podIP'
+172.17.0.3
+172.17.0.3
+172.17.0.7
+172.17.0.3
+172.17.0.3
+```
