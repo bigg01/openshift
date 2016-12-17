@@ -1,5 +1,164 @@
-# openshift
+# openshif
 
+`git clone https://github.com/kamon-io/docker-grafana-graphite.git
+Cloning into 'docker-grafana-graphite'...
+remote: Counting objects: 262, done.
+remote: Total 262 (delta 0), reused 0 (delta 0), pack-reused 262
+Receiving objects: 100% (262/262), 75.97 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (113/113), done.
+Checking connectivity... done.
+ guo  ~  grafana-compose  $   oc import docker-compose -f ./docker-compose.yml -o yaml
+error: open /Users/guo/grafana-compose/Dockerfile: no such file or directory
+ guo  ~  grafana-compose  $  ls
+docker-compose.yml      docker-grafana-graphite
+ guo  ~  grafana-compose  $  cd docker-grafana-graphite/
+ guo  ~  grafana-compose  docker-grafana-graphite   master  $   oc import docker-compose -f ./docker-compose.yml -o yaml
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    creationTimestamp: null
+    name: grafana_graphite
+  spec:
+    tags:
+    - annotations:
+        openshift.io/imported-from: ubuntu:14.04
+      from:
+        kind: DockerImage
+        name: ubuntu:14.04
+      generation: null
+      importPolicy: {}
+      name: from
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    creationTimestamp: null
+    name: grafana_graphite
+  spec:
+    nodeSelector: null
+    output:
+      to:
+        kind: ImageStreamTag
+        name: grafana_graphite:latest
+    postCommit: {}
+    resources: {}
+    source:
+      contextDir: .
+      git:
+        ref: master
+        uri: https://github.com/kamon-io/docker-grafana-graphite.git
+      type: Git
+    strategy:
+      dockerStrategy:
+        from:
+          kind: ImageStreamTag
+          name: grafana_graphite:from
+      type: Docker
+    triggers:
+    - github:
+        secret: MRaAp3h2ynQzm5ewavfn
+      type: GitHub
+    - generic:
+        secret: P9PCFl9bawP7DmPBLjjK
+      type: Generic
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+  status:
+    lastVersion: 0
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    creationTimestamp: null
+    name: grafanagraphite
+  spec:
+    tags:
+    - annotations:
+        openshift.io/imported-from: kamon/grafana_graphite
+      from:
+        kind: DockerImage
+        name: kamon/grafana_graphite
+      generation: null
+      importPolicy: {}
+      name: latest
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    creationTimestamp: null
+    name: grafanagraphite
+  spec:
+    replicas: 1
+    selector:
+      deploymentconfig: grafanagraphite
+    strategy:
+      resources: {}
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          deploymentconfig: grafanagraphite
+      spec:
+        containers:
+        - image: kamon/grafana_graphite
+          name: kamon-grafana-dashboard
+          ports:
+          - containerPort: 80
+          - containerPort: 81
+          - containerPort: 8126
+          resources: {}
+          volumeMounts:
+          - mountPath: /opt/grafana/data
+            name: dir-1
+          - mountPath: /opt/graphite/storage/log
+            name: dir-2
+          - mountPath: /opt/graphite/storage/whisper
+            name: dir-3
+        volumes:
+        - emptyDir: {}
+          name: dir-1
+        - emptyDir: {}
+          name: dir-2
+        - emptyDir: {}
+          name: dir-3
+    test: false
+    triggers:
+    - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - grafanagraphite
+        from:
+          kind: ImageStreamTag
+          name: grafanagraphite:latest
+      type: ImageChange
+  status: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: null
+    name: grafanagraphite
+  spec:
+    ports:
+    - name: 80-tcp
+      port: 80
+      targetPort: 80
+    - name: 81-tcp
+      port: 81
+      targetPort: 81
+    - name: 8126-tcp
+      port: 8126
+      targetPort: 8126
+    selector:
+      deploymentconfig: grafanagraphite
+  status:
+    loadBalancer: {}
+kind: List
+metadata: {}`
 The goal create a pod where is not dying
 
 https://docs.openshift.org/latest/dev_guide/new_app.html
