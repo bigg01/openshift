@@ -1,6 +1,9 @@
 # openshif
-
-`git clone https://github.com/kamon-io/docker-grafana-graphite.git
+```
+oc run -it gotest1 --rm=true --restart='Never' --image=bigg01/go-17-centos7:latest -- /bin/sh
+```
+```
+git clone https://github.com/kamon-io/docker-grafana-graphite.git
 Cloning into 'docker-grafana-graphite'...
 remote: Counting objects: 262, done.
 remote: Total 262 (delta 0), reused 0 (delta 0), pack-reused 262
@@ -158,14 +161,15 @@ items:
   status:
     loadBalancer: {}
 kind: List
-metadata: {}`
+metadata: {}
+```
 The goal create a pod where is not dying
 
 https://docs.openshift.org/latest/dev_guide/new_app.html
 https://docs.openshift.org/latest/getting_started/administrators.html#running-in-a-docker-container
 
 # template get
-`oc get pod  minion-1-5a9p6 -o go-template={{.status.podIP}}`
+```oc get pod  minion-1-5a9p6 -o go-template={{.status.podIP}}```
 
 # run tty container root yum install
 # oc run -i --tty temp2 --image centos:latest
