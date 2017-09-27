@@ -1,5 +1,6 @@
 ##  create a groupd with permissions
-
+3.6 
+https://docs.openshift.com/container-platform/3.6/admin_solutions/user_role_mgmt.html#view-roles-users-project
 ```sh
 # new group
 oc adm groups new oligroup
