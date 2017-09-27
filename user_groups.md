@@ -1,4 +1,6 @@
 ##  create a groupd with permissions
+
+```
 # new group
 oc adm groups new oligroup
 # add users to group
