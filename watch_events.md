@@ -1,3 +1,6 @@
+# sbb event forwarder
+https://github.com/oscp/openshift-eventforwarder/blob/master/main.go
+
 $ oc get events --show-all --all-namespaces --watch | ccze
 
 $ oc get events --show-all -n myproject --watch | ccze
