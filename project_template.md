@@ -57,3 +57,8 @@ Quota:			<none>
 Resource limits:	<none>
 
 ```
+
+
+oc policy add-role-to-user edit system:serviceaccount:proj1:default -n proj2
+
+oc set resources deployment nginx --limits=cpu=200m,memory=512Mi --requests=cpu=100m,memory=256Mi
