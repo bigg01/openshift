@@ -151,3 +151,9 @@ rolebinding "system:image-builders" created
 rolebinding "system:deployers" created
 rolebinding "admin" created
 ```
+$ oc process  project-requestv12 --param-file=infileproject.txt -n sixprojectspaces| oc create -f -
+project "olig" created
+rolebinding "system:image-pullers" created
+rolebinding "system:image-builders" created
+rolebinding "system:deployers" created
+rolebinding "admin" created
