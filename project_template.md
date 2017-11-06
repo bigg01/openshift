@@ -165,3 +165,16 @@ rolebinding "system:image-pullers" created
 rolebinding "system:image-builders" created
 rolebinding "system:deployers" created
 rolebinding "edit" created
+
+
+
+oc adm groups new oliedit
+  584  oc adm groups add-users oliedit tkggo-e
+  585  oc describe groups  oliedit
+  586  history
+ guo  ~  $  oc describe groups  oliedit
+Name:		oliedit
+Created:	2 minutes ago
+Labels:		<none>
+Annotations:	<none>
+Users:		tkggo-e
