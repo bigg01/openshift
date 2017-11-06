@@ -178,3 +178,37 @@ Created:	2 minutes ago
 Labels:		<none>
 Annotations:	<none>
 Users:		tkggo-e
+
+
+
+```sh
+oc get rolebindings -n olig
+NAME                    ROLE                    USERS     GROUPS                        SERVICE ACCOUNTS   SUBJECTS
+basic-user              /basic-user             tkggo-b
+edit                    /edit                             oliedit
+system:deployers        /system:deployer                                                deployer
+system:image-builders   /system:image-builder                                           builder
+system:image-pullers    /system:image-puller              system:serviceaccounts:olig
+view                    /view                   tkggo-v
+ guo  ~  $  oc get -o yaml rolebindings edit
+apiVersion: v1
+groupNames:
+- oliedit
+kind: RoleBinding
+metadata:
+  creationTimestamp: 2017-11-06T20:53:40Z
+  name: edit
+  namespace: olig
+  resourceVersion: "3530"
+  selfLink: /oapi/v1/namespaces/olig/rolebindings/edit
+  uid: 91b85e08-c334-11e7-a94e-12648b8d89aa
+roleRef:
+  name: edit
+subjects:
+- kind: Group
+  name: oliedit
+userNames: null
+```
+  586  history`
+  586  history`
+  586  history
