@@ -1,8 +1,35 @@
+### disable self provisionir
+
+
+
+https://docs.openshift.com/container-platform/3.6/admin_guide/managing_projects.html
+
+```
+Disabling Self-provisioning
+Removing the self-provisioners cluster role from authenticated user groups will deny permissions for self-provisioning any new projects.
+
+$ oadm policy remove-cluster-role-from-group self-provisioner system:authenticated system:authenticated:oauth
+When disabling self-provisioning, set the projectRequestMessage parameter in the master-config.yaml file to instruct developers on how to request a new project. This parameter is a string that will be presented to the developer in the web console and command line when they attempt to self-provision a project. For example:
+
+Contact your system administrator at projectname@example.com to request a project.
+or:
+
+To request a new project, fill out the project request form located at
+https://internal.example.com/openshift-project-request.
+```
+
+## create project template
+
 $ oc adm create-bootstrap-project-template  > template.yml
 
 
+
+## create project template
+
 ```
 
+$ oc new-project sixprojectspaces
+$ oc create -f 
 $ oc process project-requestv12-edit-group --param-file=infileprojectgroup-p.txt -n sixprojectspaces| oc create -f -
 project "proj1" created
 rolebinding "system:image-pullers" created
