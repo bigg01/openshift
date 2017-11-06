@@ -24,6 +24,8 @@
           openshift.io/requester: '${PROJECT_REQUESTING_USER}'
         creationTimestamp: null
         name: '${PROJECT_NAME}'
+        labels:
+          netzone: '${netzone}'
       spec: {}
       status: {}
     - apiVersion: authorization.openshift.io/v1
@@ -73,17 +75,29 @@
       kind: RoleBinding
       metadata:
         creationTimestamp: null
-        name: edit
+        name: sixedit
         namespace: '${PROJECT_NAME}'
       roleRef:
-        name: edit
+        name: ${PROJECT_ADMIN_TYPE}
       subjects:
         - kind: Group
           name: '${PROJECT_ADMIN_GROUP}'
   parameters:
+    - name: netzone
+      value:  'v12'
+      required: true
     - name: PROJECT_NAME
+    - description: 'P Name'
+      displayName: 'Project Name'
+      name: PROJECT_NAME
+      required: true
+      value: 'proj-six-pass'
     - name: PROJECT_DISPLAYNAME
     - name: PROJECT_DESCRIPTION
     - name: PROJECT_ADMIN_USER
     - name: PROJECT_REQUESTING_USER
     - name: PROJECT_ADMIN_GROUP
+    - name: PROJECT_ADMIN_TYPE
+      description: 'edit or view'
+      required: true
+      value: 'view'
