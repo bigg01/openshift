@@ -233,3 +233,26 @@ PROJECT_ADMIN_USER="tkggo"
 PROJECT_REQUESTING_USER="tkggo"
 PROJECT_ADMIN_GROUP="oliedit"
 ```
+
+
+```sh
+
+oc process project-requestv12-edit-group --param-file=infileprojectgroup-p.txt -n sixprojectspaces| oc create -f -
+project "proj1" created
+rolebinding "system:image-pullers" created
+rolebinding "system:image-builders" created
+rolebinding "system:deployers" created
+rolebinding "sixedit" created
+ guo  ~  $  cat infileprojectgroup-p.txt
+netzone=v12
+PROJECT_NAME=proj1
+PROJECT_DISPLAYNAME=proj1
+PROJECT_DESCRIPTION="my pass"
+PROJECT_ADMIN_USER=tkggo
+PROJECT_REQUESTING_USER=tkggo
+PROJECT_ADMIN_GROUP=oliedit
+PROJECT_ADMIN_TYPE=edit
+```
+
+PROJECT_DESCRIPTION="desc"`^
+PROJECT_DESCRIPTION="desc"
