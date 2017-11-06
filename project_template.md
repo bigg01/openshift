@@ -22,7 +22,12 @@ https://internal.example.com/openshift-project-request.
 
 $ oc adm create-bootstrap-project-template  > template.yml
 
-
+## create groups
+$ oc adm groups new oliedit
+$ oc adm groups add-users oliedit tkggo-e
+$ oc adm groups new oliview
+$ oc adm groups add-users oliview tkggo-v
+$
 
 ## create project template
 
