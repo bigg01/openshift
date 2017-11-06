@@ -78,7 +78,7 @@
         name: sixedit
         namespace: '${PROJECT_NAME}'
       roleRef:
-        name: ${PROJECT_ADMIN_TYPE}
+        name: edit
       subjects:
         - kind: Group
           name: '${PROJECT_GROUP_EDIT}'
@@ -90,7 +90,7 @@
         name: sixeview
         namespace: '${PROJECT_NAME}'
       roleRef:
-        name: ${PROJECT_ADMIN_TYPE}
+        name: view
       subjects:
         - kind: Group
           name: '${PROJECT_GROUP_VIEW}'
@@ -108,8 +108,5 @@
     - name: PROJECT_ADMIN_USER
     - name: PROJECT_REQUESTING_USER
     - name: PROJECT_GROUP_EDIT
-    - name: PROJECT_GROUP_VIEW
-    - name: PROJECT_ADMIN_TYPE
-      description: 'edit or view'
       required: true
-      value: 'view'
+    - name: PROJECT_GROUP_VIEW
