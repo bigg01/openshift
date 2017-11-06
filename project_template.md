@@ -209,6 +209,27 @@ subjects:
   name: oliedit
 userNames: null
 ```
-  586  history`
-  586  history`
-  586  history
+
+
+
+```
+ oc process project-requestv12-edit-group --param-file=infileprojectgroup.txt -n sixprojectspaces| oc create -f -
+project "oliggroup" created
+rolebinding "system:image-pullers" created
+rolebinding "system:image-builders" created
+rolebinding "system:deployers" created
+rolebinding "edit" created
+ guo  ~  $  oc get rolebindings -n oliggroup
+NAME                    ROLE                    USERS     GROUPS                             SERVICE ACCOUNTS   SUBJECTS
+edit                    /edit                             oliedit
+system:deployers        /system:deployer                                                     deployer
+system:image-builders   /system:image-builder                                                builder
+system:image-pullers    /system:image-puller              system:serviceaccounts:oliggroup
+ guo  ~  $  cat infileprojectgroup.txt
+PROJECT_NAME="oliggroup"
+PROJECT_DISPLAYNAME="oliggroup"
+PROJECT_DESCRIPTION="desc"
+PROJECT_ADMIN_USER="tkggo"
+PROJECT_REQUESTING_USER="tkggo"
+PROJECT_ADMIN_GROUP="oliedit"
+```
