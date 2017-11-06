@@ -86,7 +86,6 @@
     - name: netzone
       value:  'v12'
       required: true
-    - name: PROJECT_NAME
     - description: 'P Name'
       displayName: 'Project Name'
       name: PROJECT_NAME
