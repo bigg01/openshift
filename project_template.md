@@ -29,7 +29,7 @@ $ oc adm create-bootstrap-project-template  > template.yml
 ```
 
 $ oc new-project sixprojectspaces
-$ oc create -f 
+$ oc create -f project-requestv12-edit-group.yaml -n sixprojectspaces
 $ oc process project-requestv12-edit-group --param-file=infileprojectgroup-p.txt -n sixprojectspaces| oc create -f -
 project "proj1" created
 rolebinding "system:image-pullers" created
