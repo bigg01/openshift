@@ -81,7 +81,19 @@
         name: ${PROJECT_ADMIN_TYPE}
       subjects:
         - kind: Group
-          name: '${PROJECT_ADMIN_GROUP}'
+          name: '${PROJECT_GROUP_EDIT}'
+    - apiVersion: authorization.openshift.io/v1
+      groupNames: null
+      kind: RoleBinding
+      metadata:
+        creationTimestamp: null
+        name: sixeview
+        namespace: '${PROJECT_NAME}'
+      roleRef:
+        name: ${PROJECT_ADMIN_TYPE}
+      subjects:
+        - kind: Group
+          name: '${PROJECT_GROUP_VIEW}'
   parameters:
     - name: netzone
       value:  'v12'
@@ -95,7 +107,8 @@
     - name: PROJECT_DESCRIPTION
     - name: PROJECT_ADMIN_USER
     - name: PROJECT_REQUESTING_USER
-    - name: PROJECT_ADMIN_GROUP
+    - name: PROJECT_GROUP_EDIT
+    - name: PROJECT_GROUP_VIEW
     - name: PROJECT_ADMIN_TYPE
       description: 'edit or view'
       required: true
