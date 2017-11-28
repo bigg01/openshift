@@ -58,23 +58,27 @@ rules:
 
 ```
 ```
+oc export  ClusterRole edit > edit.yml
+```
+
+```
 apiVersion: v1
 kind: ClusterRole
 metadata:
   annotations:
-    openshift.io/description: A user that has edit rights within the project and can
-      change the project's membership.
+    openshift.io/description: A user that can create and edit most objects in a project,
+      but can not update the project's membership.
   creationTimestamp: null
-  name: admin-noremote
+  name: edit
 rules:
 - apiGroups:
   - ""
   attributeRestrictions: null
   resources:
   - pods
-    #  - pods/attach
+  - pods/attach
   - pods/exec
-    #  - pods/portforward
+  - pods/portforward
   - pods/proxy
   verbs:
   - create
@@ -171,7 +175,6 @@ rules:
   - deployments/scale
   - horizontalpodautoscalers
   - jobs
-  - networkpolicies
   - replicasets
   - replicasets/scale
   - replicationcontrollers/scale
@@ -209,61 +212,6 @@ rules:
   - list
   - patch
   - update
-  - watch
-- apiGroups:
-  - authorization.openshift.io
-  - ""
-  attributeRestrictions: null
-  resources:
-  - rolebindings
-  - roles
-  verbs:
-  - create
-  - delete
-  - deletecollection
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - authorization.openshift.io
-  - ""
-  attributeRestrictions: null
-  resources:
-  - localresourceaccessreviews
-  - localsubjectaccessreviews
-  - subjectrulesreviews
-  verbs:
-  - create
-- apiGroups:
-  - security.openshift.io
-  - ""
-  attributeRestrictions: null
-  resources:
-  - podsecuritypolicyreviews
-  - podsecuritypolicyselfsubjectreviews
-  - podsecuritypolicysubjectreviews
-  verbs:
-  - create
-- apiGroups:
-  - authorization.k8s.io
-  attributeRestrictions: null
-  resources:
-  - localsubjectaccessreviews
-  verbs:
-  - create
-- apiGroups:
-  - authorization.openshift.io
-  - ""
-  attributeRestrictions: null
-  resources:
-  - policies
-  - policybindings
-  - rolebindingrestrictions
-  verbs:
-  - get
-  - list
   - watch
 - apiGroups:
   - build.openshift.io
@@ -316,7 +264,6 @@ rules:
   resources:
   - jenkins
   verbs:
-  - admin
   - edit
   - view
 - apiGroups:
@@ -410,10 +357,7 @@ rules:
   resources:
   - projects
   verbs:
-  - delete
   - get
-  - patch
-  - update
 - apiGroups:
   - quota.openshift.io
   - ""
@@ -458,14 +402,6 @@ rules:
   - list
   - watch
 - apiGroups:
-  - route.openshift.io
-  - ""
-  attributeRestrictions: null
-  resources:
-  - routes/status
-  verbs:
-  - update
-- apiGroups:
   - template.openshift.io
   - ""
   attributeRestrictions: null
@@ -507,15 +443,5 @@ rules:
   - get
   - list
   - watch
-- apiGroups:
-  - authorization.openshift.io
-  - ""
-  attributeRestrictions: null
-  resources:
-  - resourceaccessreviews
-  - subjectaccessreviews
-  verbs:
-  - create
 ```
-  - pods/proxy`^
-  - pods/proxy
+
