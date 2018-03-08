@@ -29,3 +29,15 @@ diff -u jenkins-admin-orig.yml jenkins-admin.yml
    - quota.openshift.io
 
 ```
+
+
+```yaml
+apiVersion: authorization.openshift.io/v1
+groupNames: null
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: sixedit
+roleRef:
+  name: jenkins-admin
+```
