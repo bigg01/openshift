@@ -3,6 +3,7 @@ $ oc get ClusterRole  |grep admin
 $ oc export ClusterRole admin > jenkins-admin.yml
 $ vi jenkins-admin.yml
 $ oc export ClusterRole admin > jenkins-admin-orig.yml
+$ oc create -f jenkins-admi-org.yml
  
 diff -u jenkins-admin-orig.yml jenkins-admin.yml
 --- jenkins-admin-orig.yml	2018-03-08 20:25:52.000000000 +0100
@@ -97,6 +98,42 @@ system:deployers        /system:deployer                                        
 system:image-builders   /system:image-builder                                                  builder
 system:image-pullers    /system:image-puller                system:serviceaccounts:myproject
 ```
+
+```sh
+
+groupNames: null
+kind: RoleBinding
+metadata:
+  creationTimestamp: 2018-03-08T19:36:42Z
+  name: sixedit
+  namespace: myproject
+  resourceVersion: "2821"
+  selfLink: /oapi/v1/namespaces/myproject/rolebindings/sixedit
+  uid: 0767adaa-2308-11e8-86c5-025000000001
+roleRef:
+  name: jenkins-admin
+subjects:
+- kind: User
+  name: developer
+userNames:
+- developer
+ guo  ~  $  oc get rolebindings admin -o yaml
+apiVersion: v1
+groupNames: null
+kind: RoleBinding
+metadata:
+  creationTimestamp: 2018-03-08T19:37:18Z
+  name: admin
+  namespace: myproject
+  resourceVersion: "2767"
+  selfLink: /oapi/v1/namespaces/myproject/rolebindings/admin
+  uid: 1ce99ce1-2308-11e8-86c5-025000000001
+roleRef:
+  name: admin
+subjects: []
+userNames: null
+```
+
 
 ```yaml
 #cat jenkins-admin.yml
