@@ -560,4 +560,17 @@ rules:
   - create
 
 ```
+
+
+```yaml
+apiVersion: v1
+groupNames: null
+kind: RoleBinding
+metadata:
+  name: ${JENKINS_SERVICE_NAME}_edit
+roleRef:
+  name: edit
+subjects:
+- kind: ServiceAccount
+```
 NAME                    ROLE                    USERS       GROUPS                             SERVICE ACCOUNTS   SUBJECTS
