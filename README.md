@@ -1,4 +1,4 @@
-# openshif
+# OpenShift
 ```
 oc run -it gotest1 --rm=true --restart='Never' --image=bigg01/go-17-centos7:latest -- /bin/sh
 ```
