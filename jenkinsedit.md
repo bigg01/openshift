@@ -567,10 +567,11 @@ apiVersion: v1
 groupNames: null
 kind: RoleBinding
 metadata:
-  name: ${JENKINS_SERVICE_NAME}_edit
+  name: jenkins_edit
 roleRef:
   name: edit
 subjects:
 - kind: ServiceAccount
+  name: jenkins
 ```
 NAME                    ROLE                    USERS       GROUPS                             SERVICE ACCOUNTS   SUBJECTS
